@@ -1,4 +1,5 @@
 /*style.css*/
+// File: frontend/style.css
 /* General Page Styling */
 body {
     background: linear-gradient(120deg, #1e3c72, #2a5298);
@@ -36,18 +37,71 @@ body {
 }
 
 .card:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
 }
 
-/* No Results/Error Message */
+/* Added: Review Section Styling */
+.review-section {
+    margin-top: 15px;
+    text-align: left;
+}
+
+.review-form {
+    margin-bottom: 15px;
+}
+
+.review-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    resize: vertical;
+    min-height: 60px;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.review-button {
+    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.reviews {
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.review {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.review:last-child {
+    border-bottom: none;
+}
+
+.review small {
+    color: #aaa;
+    font-style: italic;
+}
+
+/* Rest of your existing styles remain the same */
 .no-results,
 .error {
     font-size: 1.5em;
     margin-top: 20px;
 }
 
-/* Search Bar Styling */
 #form {
     margin: 20px auto;
 }
@@ -65,7 +119,6 @@ body {
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
 }
 
-/* Loading Spinner */
 #loading {
     display: none;
     position: absolute;
@@ -80,7 +133,6 @@ body {
     animation: spin 1s linear infinite;
 }
 
-/* Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -93,15 +145,10 @@ body {
 }
 
 @keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
-/* Search Button Styling */
 button {
     padding: 10px 20px;
     font-size: 1.1em;
