@@ -1,174 +1,359 @@
 /*style.css*/
-// File: frontend/style.css
-/* General Page Styling */
+/* General Styles */
 body {
-    background: linear-gradient(120deg, #1e3c72, #2a5298);
-    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1a1c20 0%, #2d3436 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     color: #fff;
-    text-align: center;
+    min-height: 100vh;
 }
 
-#section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+/* Search Form */
+#form {
+    background: rgba(255, 255, 255, 0.1);
     padding: 20px;
-    animation: fadeIn 1s ease-in-out;
-}
-
-/* Movie Card Styling */
-.card {
-    background-color: rgba(255, 255, 255, 0.1);
+    margin: 20px auto;
+    max-width: 600px;
     border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    width: 200px;
-    text-align: center;
+    display: flex;
+    gap: 10px;
 }
 
-.card img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
+#query {
+    flex: 1;
+    padding: 12px 20px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+}
+
+#query:focus {
+    box-shadow: 0 0 15px rgba(81, 203, 238, 0.5);
+    outline: none;
+}
+
+/* Movie Grid */
+#section {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Movie Cards */
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Added: Review Section Styling */
-.review-section {
-    margin-top: 15px;
-    text-align: left;
+.card-image {
+    position: relative;
+    padding-top: 150%;
 }
 
-.review-form {
-    margin-bottom: 15px;
-}
-
-.review-form textarea {
+.card-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    padding: 8px;
-    margin-bottom: 8px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-    resize: vertical;
-    min-height: 60px;
-    background: rgba(255, 255, 255, 0.9);
+    height: 100%;
+    object-fit: cover;
 }
 
-.review-button {
-    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+.card-content {
+    padding: 15px;
+    text-align: center;
+}
+
+.card h3 {
+    margin: 10px 0;
+    font-size: 1.2em;
+    color: #fff;
+}
+
+.year {
+    color: #aaa;
+    margin: 5px 0;
+}
+
+.rating {
+    color: #ffd700;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.view-details-btn {
+    background: linear-gradient(45deg, #ff6b6b, #ff8e53);
     color: white;
     border: none;
     padding: 8px 16px;
-    border-radius: 4px;
+    border-radius: 20px;
     cursor: pointer;
-}
-
-.reviews {
-    max-height: 200px;
-    overflow-y: auto;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 4px;
+    font-weight: 600;
+    transition: all 0.3s ease;
     margin-top: 10px;
 }
 
-.review {
+.view-details-btn:hover {
+    background: linear-gradient(45deg, #ff8e53, #ff6b6b);
+    transform: scale(1.05);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.modal-content {
+    background: #1a1c20;
+    margin: 40px auto;
+    padding: 25px;
+    max-width: 800px;
+    border-radius: 15px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.close:hover {
+    color: #fff;
+}
+
+/* Movie Details */
+.movie-header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.movie-header img {
+    width: 200px;
+    border-radius: 10px;
+}
+
+.movie-info h2 {
+    margin-top: 0;
+    color: #fff;
+}
+
+.movie-info p {
+    margin: 8px 0;
+    color: #aaa;
+}
+
+.movie-plot {
+    margin: 20px 0;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+/* Reviews Section */
+.reviews-section {
+    margin-top: 30px;
+}
+
+.review-form {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.review-form input,
+.review-form textarea,
+.edit-review-form input,
+.edit-review-form textarea {
+    width: 100%;
+    padding: 12px;
     margin-bottom: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    font-size: 14px;
 }
 
-.review:last-child {
-    border-bottom: none;
+.review-form textarea,
+.edit-review-form textarea {
+    min-height: 100px;
+    resize: vertical;
 }
 
-.review small {
+.submit-review,
+.save-edit,
+.cancel-edit {
+    background: linear-gradient(45deg, #4CAF50, #45a049);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.cancel-edit {
+    background: linear-gradient(45deg, #ff4444, #cc0000);
+    margin-left: 10px;
+}
+
+.submit-review:hover,
+.save-edit:hover {
+    background: linear-gradient(45deg, #45a049, #4CAF50);
+    transform: scale(1.05);
+}
+
+.cancel-edit:hover {
+    background: linear-gradient(45deg, #cc0000, #ff4444);
+    transform: scale(1.05);
+}
+
+/* Reviews List */
+.reviews-list {
+    margin-top: 20px;
+}
+
+.review-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.review-text {
+    color: #fff;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.review-user {
+    color: #aaa;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.review-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-review,
+.delete-review {
+    padding: 5px 15px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.3s ease;
+}
+
+.edit-review {
+    background: #2196F3;
+    color: white;
+}
+
+.delete-review {
+    background: #f44336;
+    color: white;
+}
+
+.edit-review:hover,
+.delete-review:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+.no-reviews {
+    text-align: center;
     color: #aaa;
     font-style: italic;
 }
 
-/* Rest of your existing styles remain the same */
-.no-results,
-.error {
-    font-size: 1.5em;
-    margin-top: 20px;
-}
-
-#form {
-    margin: 20px auto;
-}
-
-#query {
-    padding: 10px 15px;
-    font-size: 1.2em;
-    border: none;
-    border-radius: 5px;
-    outline: none;
-    transition: box-shadow 0.3s ease;
-}
-
-#query:focus {
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-}
-
+/* Loading Animation */
 #loading {
     display: none;
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 8px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    border-top: 8px solid #fff;
     width: 50px;
     height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    border-top-color: #fff;
     animation: spin 1s linear infinite;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    z-index: 1000;
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-button {
-    padding: 10px 20px;
-    font-size: 1.1em;
-    font-weight: bold;
-    color: #fff;
-    background: linear-gradient(90deg, #ff7e5f, #feb47b);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+/* Responsive Design */
+@media (max-width: 768px) {
+    .movie-header {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .movie-header img {
+        width: 180px;
+        margin: 0 auto;
+    }
+
+    .modal-content {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    #form {
+        margin: 20px;
+        flex-direction: column;
+    }
+
+    .view-details-btn {
+        width: 100%;
+    }
 }
 
-button:hover {
-    background: linear-gradient(90deg, #feb47b, #ff7e5f);
-    transform: scale(1.1);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-}
-
-button:active {
-    transform: scale(1);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+/* Error and No Results States */
+.error,
+.no-results {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    margin: 20px;
 }

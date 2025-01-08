@@ -1,4 +1,4 @@
-// Add this file: netlify.toml
+// Add this file: /frontend/netlify.toml
 [build]
   publish = "/"
   command = ""
