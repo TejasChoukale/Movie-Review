@@ -8,10 +8,21 @@ const app = express();
 
 // Updated CORS configuration to allow Netlify domain
 app.use(cors({
-    origin: 'https://movie-reviews-tejas.netlify.app/',
+    origin: (origin, callback) => {
+        const allowedOrigins = [
+            'https://movie-reviews-tejas.netlify.app',
+            'https://fascinating-kangaroo-e8cd6b.netlify.app'
+        ];
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type']
 }));
+
 
 app.use(express.json());
 app.use("/api/v1/reviews", reviews);
