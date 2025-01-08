@@ -1,7 +1,6 @@
-// Add this file: /frontend/netlify.toml
 [build]
-  publish = "/"
-  command = ""
+  publish = "build"
+  command = "npm run build"
 
 [[redirects]]
   from = "/*"
