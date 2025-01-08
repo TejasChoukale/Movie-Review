@@ -8,7 +8,7 @@ const app = express();
 
 // Updated CORS configuration to allow Netlify domain
 app.use(cors({
-    origin: 'https://fascinating-kangaroo-e8cd6b.netlify.app',
+    origin: 'https://movie-reviews-tejas.netlify.app/',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type']
 }));
